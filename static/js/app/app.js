@@ -1,4 +1,4 @@
-define(['util', 'moment', './models', './views'], function(u, moment, models, views) {
+define(['util/util', 'moment', './models', './views'], function(u, moment, models, views) {
 
   var ret = {};
 

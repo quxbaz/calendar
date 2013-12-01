@@ -1,8 +1,12 @@
-define(function() {
+define(['util/util'], function(u) {
 
   var ret = {};
 
-  $('.template');
+  // $('.template');
+
+  ret.init = function() {
+    u.log('init');
+  };
 
   return ret;
 
