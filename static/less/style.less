@@ -1,0 +1,67 @@
+@import "mixins";
+@import "colors";
+
+body {}
+
+#content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  // background: @background;
+  .d;
+}
+
+.calendar {
+  .d;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.notepad {
+  .d(#0f0);
+  position: fixed;
+  top: 0; right: 0;
+  width: 30%;
+  height: 100%;
+}
+
+.editor-textarea {
+  display: block;
+  width: 100%;
+  // min-height: 300px;
+  height: 40px;
+  resize: none;
+}
+
+input.age {}
+
+.time-row {
+  // .d;
+  width: auto;
+  // height: auto;
+  margin: 12px 0;
+  // line-height: 0;
+}
+
+.time-block {
+  .col;
+  .d;
+  width: (100% / 52);
+  height: 24px;
+  .transition(all 200ms linear);
+  &.active {
+    width: 240px;
+    height: 160px;
+  }
+}
+
+.week-block {}
+
+.day-block {}
+
+.row-month {
+  display: inline-block;
+  width: 40px;
+  margin-right: 8px;
+  text-align: right;
+}

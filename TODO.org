@@ -1,0 +1,16 @@
+Todo
+
+* Big Features
+  --
+
+* Code
+  - [ ] Have a config file load static assets so you don't have to list all of them in the main html file.
+
+* Misc
+  - The user should be able to quickly navigate various entries or
+    browse through them all one-by-one without much delay. The use of
+    modals doesn't allow this due to the time it takes for it to pop
+    up.
+
+* Guidelines
+  --
