@@ -8,7 +8,7 @@ require.config({
 
 });
 
-require(['app/app', 'util/tp'], function(app, tp) {
+require(['util/tp', 'app/app'], function(tp, app) {
   tp.init();
   app.run();
 });

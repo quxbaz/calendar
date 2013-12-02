@@ -20,6 +20,20 @@
   vertical-align: top;
 }
 
+.cols {
+  > * {
+    .col;
+  }
+}
+
+.collapse {
+  font-size: 0;
+  white-space: nowrap;
+  > * {
+    font-size: @base-font-size;
+  }
+}
+
 .spread {
   position: absolute;
   top: 0;

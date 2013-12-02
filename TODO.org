@@ -5,6 +5,11 @@ Todo
 
 * Code
   - [ ] Have a config file load static assets so you don't have to list all of them in the main html file.
+** Templating
+   - [ ] Have a way of being able to call a template from within a template.
+   - [ ] Extend handlebars to allow looping through models without having to call toJSON on each model.
+   - [ ] Compile templates server-side.
+
 
 * Misc
   - The user should be able to quickly navigate various entries or

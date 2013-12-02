@@ -1,4 +1,4 @@
-define(['util/util', './models'], function(u, models) {
+define(['util/util', 'util/tp', './models'], function(u, tp, models) {
 
   var ret = {};
 
@@ -10,8 +10,8 @@ define(['util/util', './models'], function(u, models) {
       'click .time-block': 'edit_day'
     },
 
-    initialize: function(opts) {
-      this.year = opts.year;
+    initialize: function(options) {
+      this.year = options.year;
     },
 
     edit_day: function(ev) {
@@ -29,65 +29,60 @@ define(['util/util', './models'], function(u, models) {
         $('.modal .editor-textarea').text(day.get('text'));
       });
 
-      $('#editor').modal('show').on('click', '.btn[data-action=confirm]', function() {
-        day.save({
-          text: $('.editor-textarea').val()
-        }).always(function(model, response) {
-          u.log(model);
-          u.log(response);
-        });
-      });
+      // TODO
+      // $('#editor').modal('show').on('click', '.btn[data-action=confirm]', function() {
+      //   day.save({
+      //     text: $('.editor-textarea').val()
+      //   }).always(function(model, response) {
+      //     u.log(model);
+      //     u.log(response);
+      //   });
+      // });
 
     },
 
     render: function() {
-
-      var date = new Date(this.year, 0);
-
       for (var month=0; month < MONTHS_IN_YEAR; month++) {
-        var $row = $('<div>').addClass('time-row').appendTo(this.$el);
-        date.setMonth(month);
-        var daysInMonth = moment(date).daysInMonth();
-        for (var day=0; day < daysInMonth; day++) {
-          var model = new models.Day({
-            date: u.fmt('{0}-{1}-{2}', this.year, month + 1, day + 1)
-          });
-          var view = new ret.DayBlock({model: model});
-          view.render().appendTo($row);
-          // $('<span>').addClass('time-block').appendTo($row);
-        }
-        $('<span>').addClass('row-month').prependTo($row).text(moment(date).format('MMM'));
+        var row = new ret.CalendarRow({month: month, year: this.year});
+        row.render().appendTo(this.el);
       }
-
+      return this.$el;
     }
 
   });
 
   ret.CalendarRow = Backbone.View.extend({
 
-    // template: _.template($('')),
+    template: tp.get('calendar-row'),
 
-  });
-
-  ret.DayBlock = Backbone.View.extend({
-
-    tagName: 'span',
-
-    className: 'time-block',
-
-    attributes: function() {
-      return {'data-date': this.model.get('date')}
-    },
-
-    template: _.template($('#tp-time-block').html()),
+    className: 'calendar-row',
 
     initialize: function(options) {
-      this.model = options.model;
+      this.month = options.month;
+      this.year = options.year;
+      this.date = new Date(this.year, 0);
+      this.date.setMonth(this.month);
+      this.days = moment(this.date).daysInMonth();
     },
 
     render: function() {
-      this.$el.html(this.template(this.model.toJSON()));
+
+      var that = this;
+
+      this.$el.html(this.template({
+
+        month: moment(this.date).format('MMM'),
+
+        days: u.repeat(function(day) {
+          return (new models.Day({
+            date: u.renderDate(that.year, that.month, day)
+          })).toJSON()
+        }, this.days)
+
+      }));
+
       return this.$el;
+
     }
 
   });

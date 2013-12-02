@@ -8,9 +8,7 @@ define(['util/util', 'moment', './models', './views'], function(u, moment, model
 
     var calendar = new views.Calendar({year: 2013});
 
-    calendar.render();
-
-    calendar.$el.appendTo('.calendar');
+    calendar.render().appendTo('.calendar');
 
   };
 

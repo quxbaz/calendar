@@ -1,10 +1,14 @@
-<script type="text/html" class="template" name="time-block" id="tp-time-block">
-  <!-- <span style="font-size:10px; text-align:center"><%= moment(date).format("M-D") %></span> -->
-</script>
+{% raw %}
+
+<script type="text/html" class="template" name="calendar"></script>
 
 <script type="text/html" class="template" name="calendar-row">
-  <div></div>
+  <div class="month">{{month}}</div>
+  <div class="blocks">
+    {{#days}}
+      <span class="day-block" data-date="{{date}}"></span>
+    {{/days}}
+  </div>
 </script>
 
-<script type="text/html" class="template" name="calendar">
-</script>
+{% endraw %}

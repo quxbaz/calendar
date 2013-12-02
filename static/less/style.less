@@ -1,5 +1,10 @@
-@import "mixins";
+@import "vars";
 @import "colors";
+@import "mixins";
+
+* {
+  box-sizing: border-box;
+}
 
 body {}
 
@@ -35,7 +40,7 @@ body {}
 
 input.age {}
 
-.time-row {
+.calendar-row {
   // .d;
   width: auto;
   // height: auto;
@@ -43,7 +48,7 @@ input.age {}
   // line-height: 0;
 }
 
-.time-block {
+.day-block {
   .col;
   .d;
   width: (100% / 52);
@@ -55,13 +60,27 @@ input.age {}
   }
 }
 
-.week-block {}
+.week-block  {}
 
 .day-block {}
 
-.row-month {
-  display: inline-block;
-  width: 40px;
-  margin-right: 8px;
-  text-align: right;
+.calendar-row {
+
+  .cols;
+  .collapse;
+
+  .month {
+    width: 10%;
+    text-align: right;
+    padding-right: 8px;
+  }
+
+  .blocks {
+    width: 90%;
+    .collapse;
+  }
+
+}
+
+.calendar-row .month {
 }
