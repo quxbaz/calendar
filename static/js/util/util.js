@@ -1,12 +1,14 @@
 define([], function() {
 
-  var exports = {};
+  var ret = {};
 
-  exports.log = function() {
+  var u = ret;
+
+  ret.log = function() {
     return console.log.apply(console, arguments);
   };
 
-  exports.log_style = function() {
+  ret.log_style = function() {
     var args = _.toArray(arguments);
 
     if (args.length < 2)
@@ -21,13 +23,27 @@ define([], function() {
   };
 
   // TODO: Test this.
-  exports.fmt = function(str) {
-    var args = arguments;
+  ret.fmt = function(str) {
+    var args = _.rest(_.toArray(arguments));
     return str.replace(/{(\d+)}/g, function(match, number) {
       return typeof args[number] !== 'undefined' ? args[number] : match;
     });
   };
 
-  return exports;
+  ret.renderDate = function(year, month, day) {
+    return u.fmt('{0}-{1}-{2}', year, month + 1, day + 1);
+  };
+
+  ret.loop = function(fn, i) {
+    for (var n=0; n < i; n++) {
+      fn(i, n);
+    }
+  };
+
+  ret.repeat = function(fn, i) {
+    return _.map(_.range(i), fn);
+  };
+
+  return ret;
 
 });
