@@ -31,10 +31,15 @@ define([], function() {
   };
 
   ret.renderDate = function(year, month, day) {
-    return u.fmt('{0}-{1}-{2}', year, month + 1, day + 1);
+    // TODO: Test this.
+    return moment().year(year).month(month).date(day + 1).format(App.dateFormat);
+    // return u.fmt('{0}-{1}-{2}', year, month + 1, day + 1);
   };
 
-  ret.loop = function(fn, i) {
+  // todo: Allow @i to be a range. E.g., [2, 12]
+  ret.loop = function(fn, i, context) {
+    if (typeof context !== 'undefined')
+      fn = _.bind(fn, context);
     for (var n=0; n < i; n++) {
       fn(i, n);
     }
@@ -42,6 +47,18 @@ define([], function() {
 
   ret.repeat = function(fn, i) {
     return _.map(_.range(i), fn);
+  };
+
+  /*
+    Loops between two dates day-by-day. @fn is passed a Moment object.
+    todo: Test the performance of this against using the native Date object.
+  */
+  ret.loopDate = function(fn, start, end) {
+    var mCurrent = moment(start, App.dateFormat);
+    var mEnd = moment(end, App.dateFormat);
+    for (; !mCurrent.isAfter(mEnd); mCurrent.add('days', 1)) {
+      fn(mCurrent);
+    }
   };
 
   return ret;

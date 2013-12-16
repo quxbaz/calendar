@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <title>Calendar</title>
+  <title>Journal</title>
   <!-- <link rel="shortcut icon" href="/static/imgs/favicon.png" type="image/ico" /> -->
   <link rel="stylesheet" href="/static/lib/bootstrap/3.0.0/dist/css/bootstrap.css" type="text/css" media="screen" />
   <link rel="stylesheet/less" href="/static/less/style.less" type="text/css" />
@@ -13,43 +13,23 @@
 
 <body>
 
-  {% include "header.html" %}
+  <script type="text/javascript">
+    var App = {
+      dateFormat: "YYYY-MM-DD"
+    };
+  </script>
 
-  <div id="content">
+  <main>
 
-    {# {% block content %}{% endblock %} #}
+    <div class="journal"></div>
 
-    <!-- <input type="text" placeholder="Your age" class="age" /> -->
-    <div class="calendar"></div>
-
-  </div>
+  </main>
 
   <!-- <div class="notepad"> -->
   <!--   <textarea></textarea> -->
   <!-- </div> -->
 
-  {% include "footer.html" %}
-
-  <div class="modals">
-    <div id="editor" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Edit</h4>
-          </div>
-          <div class="modal-body">
-            <div class="date"></div>
-            <textarea class="editor-textarea"></textarea>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-action="confirm">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include "modals.html" %}
 
   {# TODO: Include everything in the tp/ directory. #}
   {% include "tp/tp.html" %}

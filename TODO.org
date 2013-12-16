@@ -19,3 +19,17 @@ Todo
 
 * Guidelines
   --
+
+* NEW
+  Don't use a Calendar model. The main Collection model (for holding
+  Day objects) should not separate based on any block length (e.g.,
+  week, month, year). It should contain an arbitrary number of days
+  (adjustable).
+
+* NOW
+  - Work on the Calendar Model. It should contain the Days collection.
+  - [tp.html, views.js] Work on getting the Journal view to render.
+  - Render empty day blocks. How do we render empty day blocks? How do
+    we know if a block is empty? Should we instantiate "empty"
+    objects? This seems unhygenic (generating models we may or may not
+    save to the server). Think about this.

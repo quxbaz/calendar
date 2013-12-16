@@ -4,11 +4,21 @@ define(['util/util', 'moment', './models', './views'], function(u, moment, model
 
   ret.run = function() {
 
-    var that = this;
+    // var journal = new models.Journal(mock_models, {
+    var journal = new models.Journal(null, {
+      start_date: '2013-01-01',
+      end_date: '2013-12-31'
+    });
 
-    var calendar = new views.Calendar({year: 2013});
+    new views.Journal({
+      model: journal
+    }).render().appendTo('.journal');
 
-    calendar.render().appendTo('.calendar');
+    // var calendar = new models.Calendar({year:2013});
+
+    // new views.Calendar({
+    //   model: calendar // TODO
+    // }).render().appendTo('.calendar');
 
   };
 

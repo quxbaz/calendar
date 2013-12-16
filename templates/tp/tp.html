@@ -1,13 +1,15 @@
 {% raw %}
 
-<script type="text/html" class="template" name="calendar"></script>
+<script type="text/html" class="template" name="journal">
+  {{# days }}
+    {{> journal-day }}
+  {{/ days }}
+</script>
 
-<script type="text/html" class="template" name="calendar-row">
-  <div class="month">{{month}}</div>
-  <div class="blocks">
-    {{#days}}
-      <span class="day-block" data-date="{{date}}"></span>
-    {{/days}}
+<script type="text/html" class="template" name="journal-day" partial>
+  <div>
+    <span class="date">{{ date }}</span>
+    <span class="text">{{ text }}</span>
   </div>
 </script>
 

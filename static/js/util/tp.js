@@ -11,11 +11,14 @@ define(['util/util'], function(u) {
   var templates = {};
 
   $('.template').each(function() {
-    templates[this.getAttribute('name')] = Handlebars.compile($(this).html());
+    var name = this.getAttribute('name');
+    templates[name] = Handlebars.compile($(this).html());
+    if ($(this).is('[partial]'))
+      Handlebars.registerPartial(name, templates[name]);
   });
 
   exports.init = function() {
-    // Empty function
+    // This is an empty function on purpose.
   };
 
   exports.get = function(template_name) {

@@ -1,91 +1,56 @@
-define(['util/util', 'util/tp', './models'], function(u, tp, models) {
+/*
+  almost monokai
+  desert
+  subdued
+  tango
+  tango-2
+  tomorrow
+  twilight
+  zen-and-art
+ */
+
+define(['util/util', 'util/tp', './models'], function(util, tp, models) {
 
   var ret = {};
 
   var MONTHS_IN_YEAR = 12
 
-  ret.Calendar = Backbone.View.extend({
+  ret.Journal = Backbone.View.extend({
 
-    events: {
-      'click .time-block': 'edit_day'
-    },
+    events: {},
 
-    initialize: function(options) {
-      this.year = options.year;
-    },
+    template: tp.get('journal'),
 
-    edit_day: function(ev) {
+    tagName: 'div',
 
-      var $target = $(ev.currentTarget);
-      // $target.toggleClass('active');
+    className: 'journal',
 
-      var day = new models.Day({
-        date: $target.data('date')
-      });
-
-      day.fetch().done(function() {
-        u.log(day);
-        $('.modal .date').text(day.get('date'));
-        $('.modal .editor-textarea').text(day.get('text'));
-      });
-
-      // TODO
-      // $('#editor').modal('show').on('click', '.btn[data-action=confirm]', function() {
-      //   day.save({
-      //     text: $('.editor-textarea').val()
-      //   }).always(function(model, response) {
-      //     u.log(model);
-      //     u.log(response);
-      //   });
-      // });
-
+    initialize: function() {
     },
 
     render: function() {
-      for (var month=0; month < MONTHS_IN_YEAR; month++) {
-        var row = new ret.CalendarRow({month: month, year: this.year});
-        row.render().appendTo(this.el);
-      }
+      this.$el.html(
+        this.template({days: this.model.toJSON()})
+      );
       return this.$el;
     }
 
   });
 
-  ret.CalendarRow = Backbone.View.extend({
+  // ret.Day = Backbone.View.extend({
 
-    template: tp.get('calendar-row'),
+  //   template: tp.get('journal-day'),
 
-    className: 'calendar-row',
+  //   className: 'journal-day',
 
-    initialize: function(options) {
-      this.month = options.month;
-      this.year = options.year;
-      this.date = new Date(this.year, 0);
-      this.date.setMonth(this.month);
-      this.days = moment(this.date).daysInMonth();
-    },
+  //   initialize: function(options) {},
 
-    render: function() {
+  //   render: function() {
+  //     this.$el.html(this.template(this.model.toJSON()));
+  //     return this.$el;
+  //   }
 
-      var that = this;
-
-      this.$el.html(this.template({
-
-        month: moment(this.date).format('MMM'),
-
-        days: u.repeat(function(day) {
-          return (new models.Day({
-            date: u.renderDate(that.year, that.month, day)
-          })).toJSON()
-        }, this.days)
-
-      }));
-
-      return this.$el;
-
-    }
-
-  });
+  // });
 
   return ret;
 
