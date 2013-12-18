@@ -1,15 +1,17 @@
 {% raw %}
 
 <script type="text/html" class="template" name="journal">
-  {{# days }}
-    {{> journal-day }}
-  {{/ days }}
+  <div>
+    {{# loop_date journal.start_date journal.end_date }}
+      <span class="journal-entry" title="{{this.date}}">{{this.date}}</span>
+    {{/ loop_date }}
+  </div>
 </script>
 
 <script type="text/html" class="template" name="journal-day" partial>
   <div>
-    <span class="date">{{ date }}</span>
-    <span class="text">{{ text }}</span>
+    <span class="date">{{date}}</span>
+    <span class="text">{{text}}</span>
   </div>
 </script>
 
