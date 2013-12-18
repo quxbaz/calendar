@@ -12,74 +12,12 @@ main {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  // background: @background;
 }
 
-.calendar {
+.journal-entry {
   .d;
-  width: 96%;
-  margin: 0 auto;
-}
-
-.notepad {
-  .d(#0f0);
-  position: fixed;
-  top: 0; right: 0;
-  width: 30%;
-  height: 100%;
-}
-
-.editor-textarea {
-  display: block;
-  width: 100%;
-  // min-height: 300px;
-  height: 40px;
-  resize: none;
-}
-
-input.age {}
-
-.calendar-row {
-  // .d;
-  width: auto;
-  // height: auto;
-  margin: 12px 0;
-  // line-height: 0;
-}
-
-.day-block {
   .col;
-  .d;
-  width: (100% / 52);
+  width: 24px;
   height: 24px;
-  .transition(all 200ms linear);
-  &.active {
-    width: 240px;
-    height: 160px;
-  }
-}
-
-.week-block  {}
-
-.day-block {}
-
-.calendar-row {
-
-  .cols;
-  .collapse;
-
-  .month {
-    width: 10%;
-    text-align: right;
-    padding-right: 8px;
-  }
-
-  .blocks {
-    width: 90%;
-    .collapse;
-  }
-
-}
-
-.calendar-row .month {
+  overflow: hidden;
 }
