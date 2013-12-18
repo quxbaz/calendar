@@ -4,11 +4,28 @@
 
 */
 
-define(['util/util'], function(u) {
+define(['util/util'], function(util) {
 
   var exports = {};
 
   var templates = {};
+
+  // Helpers
+
+  Handlebars.registerHelper('times', function(times, block) {
+    var html = '';
+    for(var i=0; i < times; i++)
+      html += block.fn(i);
+    return html;
+  });
+
+  Handlebars.registerHelper('loop_date', function(start, end, block) {
+    var html = '';
+    util.loop_date(function(mDate, date) {
+      html += block.fn({date: date});
+    }, start, end);
+    return html;
+  });
 
   $('.template').each(function() {
     var name = this.getAttribute('name');
