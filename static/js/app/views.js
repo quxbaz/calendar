@@ -30,7 +30,10 @@ define(['util/util', 'util/tp', './models'], function(util, tp, models) {
 
     render: function() {
       this.$el.html(
-        this.template({days: this.model.toJSON()})
+        this.template({
+          journal  : this.model
+          // days     : this.model.toJSON()
+        })
       );
       return this.$el;
     }

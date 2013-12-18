@@ -12,7 +12,7 @@ define(['util/util', 'moment', './models', './views'], function(u, moment, model
 
     new views.Journal({
       model: journal
-    }).render().appendTo('.journal');
+    }).render().appendTo('.journal-well');
 
     // var calendar = new models.Calendar({year:2013});
 

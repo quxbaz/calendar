@@ -30,9 +30,8 @@ define(['util/util'], function(util) {
       var that = this;
 
       // TODO: Default @end_date to 1 year after @start_date.
-      this.start_date = moment(options.start_date, App.dateFormat);
-      this.end_date = moment(options.end_date, App.dateFormat);
-
+      this.start_date = options.start_date;
+      this.end_date = options.end_date;
 
       var mock_models = [
         {
@@ -52,9 +51,9 @@ define(['util/util'], function(util) {
       this.add(mock_models);
       // this.fillEmptyDays();
 
-      this.each(function(day) {
-        util.log(day.get('date') + ':', day.get('text'));
-      });
+      // this.each(function(day) {
+      //   util.log(day.get('date') + ':', day.get('text'));
+      // });
 
     },
 

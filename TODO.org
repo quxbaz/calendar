@@ -10,7 +10,6 @@ Todo
    - [ ] Extend handlebars to allow looping through models without having to call toJSON on each model.
    - [ ] Compile templates server-side.
 
-
 * Misc
   - The user should be able to quickly navigate various entries or
     browse through them all one-by-one without much delay. The use of
