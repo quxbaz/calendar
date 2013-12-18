@@ -17,25 +17,46 @@ define(['util/util', 'util/tp', './models'], function(util, tp, models) {
 
   ret.Journal = Backbone.View.extend({
 
-    events: {},
-
     template: tp.get('journal'),
 
     tagName: 'div',
 
     className: 'journal',
 
+    events: {
+      'mouseover .journal-entry' : 'change_current_date',
+      'click .journal-entry'     : 'on_click_entry'
+    },
+
     initialize: function() {
     },
 
     render: function() {
+
+      var that = this;
+
       this.$el.html(
         this.template({
           journal  : this.model
           // days     : this.model.toJSON()
         })
       );
+
+      this.model.each(function(day) {
+        that.$(util.fmt('.journal-entry[data-date="{0}"]', day.get('date')))
+          .addClass('filled');
+      });
+
       return this.$el;
+    },
+
+    change_current_date: function(ev) {
+      this.$('.current-date').text($(ev.currentTarget).data('date'));
+    },
+
+    on_click_entry: function(ev) {
+      util.log($(ev.currentTarget).data('date'));
+      // var D
     }
 
   });

@@ -15,6 +15,10 @@ html, body, main, .journal-well {
   .full;
 }
 
+header {
+  display: block;
+}
+
 main {
   position: relative;
   width: 100%;
@@ -33,10 +37,18 @@ main {
 .journal {
   // .d;
   width: 360px;
-  font-size: 0;
+  .current-date {
+    text-align: center;
+    height: 24px;
+  }
+  .entries {
+    font-size: 0;
+  }
 }
 
 .journal-entry {
+
+  position: relative;
 
   .col;
 
@@ -48,5 +60,15 @@ main {
 
   border: 1px solid #ff4040;
   margin: 1px;
+
+  &.filled {
+    &:after {
+      content: "-";
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #ff2020;
+    }
+  }
 
 }

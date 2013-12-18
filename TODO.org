@@ -9,6 +9,7 @@ Todo
    - [ ] Have a way of being able to call a template from within a template.
    - [ ] Extend handlebars to allow looping through models without having to call toJSON on each model.
    - [ ] Compile templates server-side.
+   - [ ] Test performance using Chrome devtools.
 
 * Misc
   - The user should be able to quickly navigate various entries or
@@ -32,3 +33,6 @@ Todo
     we know if a block is empty? Should we instantiate "empty"
     objects? This seems unhygenic (generating models we may or may not
     save to the server). Think about this.
+  - Work on backend retrieving Day JSON.
+  - Save/fetching days.
+  - Marking grid with active days.

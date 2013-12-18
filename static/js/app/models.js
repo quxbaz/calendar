@@ -43,8 +43,12 @@ define(['util/util'], function(util) {
           text: 'Puppy had puppies!'
         },
         {
-          date: '2013-01-03',
-          text: 'Puppy is sick!'
+          date: '2013-03-03',
+          text: 'Puppy is sick.'
+        },
+        {
+          date: '2013-11-24',
+          text: 'Puppy turned into a robot!'
         }
       ];
 
