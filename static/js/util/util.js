@@ -53,11 +53,11 @@ define([], function() {
     Loops between two dates day-by-day. @fn is passed a Moment object.
     todo: Test the performance of this against using the native Date object.
   */
-  ret.loopDate = function(fn, start, end) {
+  ret.loop_date = function(fn, start, end) {
     var mCurrent = moment(start, App.dateFormat);
     var mEnd = moment(end, App.dateFormat);
     for (; !mCurrent.isAfter(mEnd); mCurrent.add('days', 1)) {
-      fn(mCurrent);
+      fn(mCurrent, mCurrent.format(App.dateFormat));
     }
   };
 
