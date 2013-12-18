@@ -6,7 +6,14 @@
   box-sizing: border-box;
 }
 
-body {}
+.full {
+  width: 100%;
+  height: 100%;
+}
+
+html, body, main, .journal-well {
+  .full;
+}
 
 main {
   position: relative;
@@ -14,10 +21,32 @@ main {
   margin: 0 auto;
 }
 
+.center-xy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journal-well {
+}
+
+.journal {
+  // .d;
+  width: 360px;
+  font-size: 0;
+}
+
 .journal-entry {
-  .d;
+
   .col;
-  width: 24px;
-  height: 24px;
+
+  width: 18px;
+  height: 18px;
+
+  font-size: @base-font-size;
   overflow: hidden;
+
+  border: 1px solid #ff4040;
+  margin: 1px;
+
 }
